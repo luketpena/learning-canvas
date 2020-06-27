@@ -30,7 +30,7 @@ let mouse = {
 
 window.addEventListener('mousemove',(event)=>{
     mouse.x = event.x;
-    mouse.y = event.y;
+    mouse.y = event.y; 
 });
 
 function Circle(x,y,dx,dy,radius,color) {
