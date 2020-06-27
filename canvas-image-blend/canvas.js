@@ -16,14 +16,24 @@ function init() {
 
     //const newData = setToBlack(image.data);
 
-    c.drawImage(image,0,0,image.width,image.height);
 
-    c.fillStyle = '#0ff';
-    c.globalCompositeOperation = "hue";
-    c.fillRect(0,0,canvas.width,canvas.height)
+    function drawImageBlend(image,color,x,y,width,height) {
+        c.drawImage(image,x,y,width,height);
 
-    c.globalCompositeOperation = "destination-in";
-    c.drawImage(image,0,0,image.width,image.height);
+        c.fillStyle = color;
+        c.globalCompositeOperation = "color";
+        c.fillRect(0,0,canvas.width,canvas.height)
+
+        c.globalCompositeOperation = "destination-in";
+        c.drawImage(image,x,y,width,height);
+
+        c.globalCompositeOperation = "source-over";
+    }
+
+    drawImageBlend(image,"#f00",0,0,image.width,image.height);
+
+    drawImageBlend(image,"#0ff",32,32,image.width,image.height);
+    
 
     image.hidden = true;
 }
